@@ -295,7 +295,11 @@
         return selfGestureRecognizer;
     }
     
-    if ([target isKindOfClass:[UIScrollView class]]) {
+    if ([target isKindOfClass:[UIScrollView class]] &&
+        (([selfGestureRecognizer isKindOfClass:UIPanGestureRecognizer.class] == NO) ||
+         ([target isKindOfClass:UICollectionView.class] == NO &&
+          [target isKindOfClass:UITableView.class] == NO)))
+    {
         return selfGestureRecognizer;
     }
     
