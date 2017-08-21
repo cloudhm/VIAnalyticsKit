@@ -305,6 +305,12 @@
     
     Class class = [target class];
     
+    if ([target isKindOfClass:UIScrollView.class])
+    {
+        // use collectionView and tableView super class as base
+        class = UIScrollView.class;
+    }
+    
     SEL originalSEL = action;
     SEL swizzledSEL = NSSelectorFromString([NSString stringWithFormat:@"vi_%@", NSStringFromSelector(action)]);
     
